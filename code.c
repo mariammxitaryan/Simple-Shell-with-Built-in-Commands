@@ -109,9 +109,7 @@ void set_env_var(char *command) {
         return;
     }
 
-    if (setenv(args[1], args[2], 1) == 0) {
-        printf("Environment variable %s set to %s\n", args[1], args[2]);
-    } else {
+    if (setenv(args[1], args[2], 1) != 0) {
         perror("setenv error");
     }
 }
@@ -132,9 +130,7 @@ void unset_env_var(char *command) {
         return;
     }
 
-    if (unsetenv(args[1]) == 0) {
-        printf("Environment variable %s removed\n", args[1]);
-    } else {
+    if (unsetenv(args[1]) != 0) {
         perror("unsetenv error");
     }
 }
